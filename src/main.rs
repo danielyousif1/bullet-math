@@ -31,12 +31,29 @@ impl MathProblem {
         let mut rng = rand::thread_rng();
         let a: i32 = rng.gen_range(1..50);
         let b: i32 = rng.gen_range(0..50);
-        MathProblem {
-            problem: format!("{} X {}", a, b),
-            answer: a * b,
+        // Randomly pick an operator: 0 for addition, 1 for subtraction, 2 for multiplication.
+        let op = rng.gen_range(0..3);
+        match op {
+            0 => MathProblem {
+                problem: format!("{} + {}", a, b),
+                answer: a + b,
+            },
+            1 => {
+                // Ensure subtraction results in a non-negative answer.
+                let (minuend, subtrahend) = if a >= b { (a, b) } else { (b, a) };
+                MathProblem {
+                    problem: format!("{} - {}", minuend, subtrahend),
+                    answer: minuend - subtrahend,
+                }
+            },
+            _ => MathProblem {
+                problem: format!("{} X {}", a, b),
+                answer: a * b,
+            },
         }
     }
 }
+
 
 #[tokio::main]
 async fn main() {
