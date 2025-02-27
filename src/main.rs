@@ -148,7 +148,7 @@ async fn handle_create_room(req: CreateRoomRequest, state: Arc<Mutex<AppState>>)
         state_guard.rooms.insert(room_id.clone(), room);
     }
 
-    let invitation_link = format!("https://bullet-math-4ed37ad30368.herokuapp.com//?room_id={}", room_id);
+    let invitation_link = format!("https://bullet-math-4ed37ad30368.herokuapp.com/?room_id={}", room_id);
 
     Ok(warp::reply::json(&serde_json::json!({
         "room_id": room_id,
@@ -179,8 +179,9 @@ fn start_room_timer(room: Arc<Mutex<Room>>) {
                 let _ = room_guard.broadcaster.send(format!("TIMER: {}", remaining));
             }
             if remaining == 0 {
-                let room_guard = room.lock().await;
+                let mut room_guard = room.lock().await;
                 let _ = room_guard.broadcaster.send("FINISH: Time's up!".to_string());
+                room_guard.started = false;
                 break;
             }
             tokio::time::sleep(Duration::from_secs(1)).await;
@@ -209,7 +210,6 @@ async fn client_connection(ws: warp::ws::WebSocket, ws_query: WSQuery, state: Ar
 
         let mut tx = ws_tx.lock().await;
         if !room_guard.started {
-            // Inform players that the game is waiting for the host to start.
             let _ = tx.send(warp::ws::Message::text("INFO: Waiting for host to start the game.")).await;
         } else {
             let init_msg = format!("PROBLEM: {}", room_guard.current_problem.problem);
@@ -283,6 +283,14 @@ async fn client_connection(ws: warp::ws::WebSocket, ws_query: WSQuery, state: Ar
                                     let _ = room_guard.broadcaster.send(progress_msg);
                                 }
                             });
+                        }
+                    } else if text.trim() == "RESTART" {
+                        let mut room_guard = room.lock().await;
+                        // Only allow restart when the game is finished.
+                        if !room_guard.started {
+                            room_guard.current_problem = MathProblem::generate();
+                            let info_msg = "INFO: Game restarted. Waiting for host to start the game.".to_string();
+                            let _ = room_guard.broadcaster.send(info_msg);
                         }
                     } else if let Ok(answer) = text.trim().parse::<i32>() {
                         let room_guard = room.lock().await;
