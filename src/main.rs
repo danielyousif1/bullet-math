@@ -148,7 +148,7 @@ async fn handle_create_room(req: CreateRoomRequest, state: Arc<Mutex<AppState>>)
         state_guard.rooms.insert(room_id.clone(), room);
     }
 
-    let invitation_link = format!("http://localhost:3030/?room_id={}", room_id);
+    let invitation_link = format!("https://bullet-math-4ed37ad30368.herokuapp.com//?room_id={}", room_id);
 
     Ok(warp::reply::json(&serde_json::json!({
         "room_id": room_id,
