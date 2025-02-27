@@ -2,25 +2,51 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Arithmetic Game</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 20px; }
-    #problem { font-size: 2em; margin-bottom: 20px; }
-    #feedback { color: red; margin-top: 10px; }
-    input[type="text"] {
-      padding: 10px;
-      font-size: 1em;
-      width: 300px;
-    }
-  </style>
+  <title>Bullet Math</title>
 </head>
 <body>
-  <h1>Arithmetic Game</h1>
-  <div class="problem-container">
-    <span id="problem">Loading problem...</span>
-    <input type="text" id="answer" placeholder="Enter your answer" autofocus>
+  <h1>Bullet Math</h1>
+
+  <!-- Registration & Room Setup -->
+  <div id="register">
+    <input type="text" id="playerName" placeholder="Your name">
+    <br>
+    <input type="number" id="roomDuration" placeholder="Room duration (sec)" value="120">
+    <br>
+    <button id="createRoom">Create Room</button>
+    <br>
+    <input type="text" id="roomId" placeholder="Room ID (if joining)">
+    <br>
+    <button id="joinRoom">Join Room</button>
+    <br>
+    <div id="roomInfo"></div>
   </div>
-  <div id="feedback"></div>
+
+  <!-- Game View -->
+  <div id="game" style="display:none;">
+    <!-- Invitation and start button for host -->
+    <div id="invitation" style="margin-bottom: 10px; font-weight: bold;"></div>
+    <button id="startBtn" style="display:none;">Start Game</button>
+    <div id="timer">Time: 120</div>
+    <div id="scoreboard"></div>
+    <div class="problem-container">
+      <span id="problem">Loading problem...</span>
+      <input type="text" id="answer" placeholder="Enter your answer" autofocus>
+    </div>
+    <div id="feedback"></div>
+  </div>
+
+  <!-- Auto-fill room ID if present in URL -->
+  <script>
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      const roomId = params.get("room_id");
+      if (roomId) {
+        document.getElementById("roomId").value = roomId;
+      }
+    };
+  </script>
+
   <script src="script.js"></script>
 </body>
 </html>
