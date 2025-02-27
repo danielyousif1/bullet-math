@@ -23,8 +23,8 @@ struct MathProblem {
 impl MathProblem {
     fn generate() -> Self {
         let mut rng = rand::thread_rng();
-        let a: i32 = rng.gen_range(1..5);
-        let b: i32 = rng.gen_range(0..5);
+        let a: i32 = rng.gen_range(1..50);
+        let b: i32 = rng.gen_range(0..50);
         let op = rng.gen_range(0..3);
         match op {
             0 => MathProblem {
