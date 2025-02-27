@@ -1,5 +1,5 @@
 [package]
-name = "speed_math_server"
+name = "bullet-math"
 version = "0.1.0"
 edition = "2021"
 

@@ -60,6 +60,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "bullet-math"
+version = "0.1.0"
+dependencies = [
+ "futures-util",
+ "rand",
+ "tokio",
+ "warp",
+]
+
+[[package]]
 name = "byteorder"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -848,16 +858,6 @@ checksum = "c970269d99b64e60ec3bd6ad27270092a5394c4e309314b18ae3fe575695fbe8"
 dependencies = [
  "libc",
  "windows-sys",
-]
-
-[[package]]
-name = "speed_math_server"
-version = "0.1.0"
-dependencies = [
- "futures-util",
- "rand",
- "tokio",
- "warp",
 ]
 
 [[package]]
