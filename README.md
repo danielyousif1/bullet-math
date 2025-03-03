@@ -1,11 +1,14 @@
 # 🚀 Bullet Math: Speed Math Multiplayer Game
 
-**Bullet Math** is a fast-paced, multiplayer math game inspired by [ZetaMac](https://arithmetic.zetamac.com/). Test your arithmetic skills in real-time against players from around the world! Built with **Rust**, **HTML**, and **CSS**, this game combines performance and simplicity for an engaging experience.
+**Bullet Math** is a fast-paced, multiplayer math game inspired by [ZetaMac](https://arithmetic.zetamac.com/). 
+<br/>Test your arithmetic skills in real-time against players from around the world!
 
 [![Play Now](https://img.shields.io/badge/Play-Now-brightgreen?style=for-the-badge&logo=heroku)](https://bullet-math-4ed37ad30368.herokuapp.com/)
 [![Rust](https://img.shields.io/badge/Made%20with-Rust-orange?style=for-the-badge&logo=rust)](https://www.rust-lang.org/)
 [![HTML](https://img.shields.io/badge/HTML-5-red?style=for-the-badge&logo=html5)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS](https://img.shields.io/badge/CSS-3-blue?style=for-the-badge&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+
+---
 
 ## 🎮 How to Play
 
@@ -56,14 +59,42 @@ To run **Bullet Math** locally, follow these steps:
    ```
    This will serve the frontend files on `http://localhost:8000`.
 
-3. Open your browser and navigate to `http://localhost:8000` to play the game locally.
+2. Open your browser and navigate to `http://localhost:8000` to play the game locally.
 
 ---
 
-## 🚀 Deployment
+## 🚀 How to Deploy on Heroku
 
-The game is deployed on **Heroku** for seamless multiplayer gameplay. Check it out here:  
-👉 [Play Bullet Math](https://bullet-math-4ed37ad30368.herokuapp.com/)
+To deploy **Bullet Math** on Heroku, follow these steps:
+
+### Prerequisites
+- Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-cli).
+
+### Steps
+1. Log in to your Heroku account:
+   ```bash
+   heroku login
+   ```
+
+2. Clone the repository (if you haven't already):
+   ```bash
+   heroku git:clone -a bullet-math
+   cd bullet-math
+   ```
+
+3. Deploy your changes:
+   ```bash
+   git add .
+   git commit -am "Deploying Bullet Math"
+   git push heroku main
+   ```
+
+4. Open the app in your browser:
+   ```bash
+   heroku open
+   ```
+
+Your game will now be live on Heroku! 🎉
 
 ---
 
@@ -112,3 +143,7 @@ Ready to test your math skills? [Play Now!](https://bullet-math-4ed37ad30368.her
 ### Notes:
 - If the frontend doesn’t require Python and is served directly by the Rust backend, you can remove the Python-related instructions.
 - If the frontend setup is different (e.g., using a specific tool like `npm` or `yarn`), let me know, and I can adjust the instructions accordingly!
+
+---
+
+This version includes a clear and concise **How to Deploy on Heroku** section, making it easy for others to deploy your project. Let me know if you need further adjustments! 🚀
