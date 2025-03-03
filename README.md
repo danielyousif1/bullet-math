@@ -7,8 +7,6 @@
 [![HTML](https://img.shields.io/badge/HTML-5-red?style=for-the-badge&logo=html5)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![CSS](https://img.shields.io/badge/CSS-3-blue?style=for-the-badge&logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
 
----
-
 ## 🎮 How to Play
 
 1. **Visit the Game**: Click the [Play Now](https://bullet-math-4ed37ad30368.herokuapp.com/) button to start playing.
@@ -28,6 +26,37 @@
 - **Rust**: For backend logic and game performance.
 - **HTML**: For structuring the game interface.
 - **CSS**: For styling and responsive design.
+
+---
+
+## ⚙️ How to Execute
+
+To run **Bullet Math** locally, follow these steps:
+
+### Prerequisites
+- **Rust**: Install Rust from [https://www.rust-lang.org/](https://www.rust-lang.org/).
+- **Python**: Install Python from [https://www.python.org/](https://www.python.org/).
+
+### Backend (Rust)
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/danielyousif1/bullet-math.git
+   cd bullet-math
+   ```
+2. Run the backend server:
+   ```bash
+   cargo run
+   ```
+   This will start the Rust backend server.
+
+### Frontend (Python)
+1. Run the Python HTTP server:
+   ```bash
+   python -m http.server 8000
+   ```
+   This will serve the frontend files on `http://localhost:8000`.
+
+3. Open your browser and navigate to `http://localhost:8000` to play the game locally.
 
 ---
 
@@ -80,5 +109,6 @@ Ready to test your math skills? [Play Now!](https://bullet-math-4ed37ad30368.her
 
 ---
 
-This version is more visually appealing, organized, and engaging. It also includes badges for technologies used, a clear call-to-action, and a structured layout for better readability.
-](https://dashboard.heroku.com/apps/bullet-math/deploy/heroku-git)
+### Notes:
+- If the frontend doesn’t require Python and is served directly by the Rust backend, you can remove the Python-related instructions.
+- If the frontend setup is different (e.g., using a specific tool like `npm` or `yarn`), let me know, and I can adjust the instructions accordingly!
